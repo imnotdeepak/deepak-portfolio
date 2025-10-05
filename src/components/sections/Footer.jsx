@@ -39,7 +39,7 @@ export const Footer = () => {
                 Github
               </a>
               <a
-                href="/resume.pdf"
+                href="/Deepak_Kolli_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors duration-200"
