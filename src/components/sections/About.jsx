@@ -7,11 +7,16 @@ export const About = () => {
     "Javascript",
     "TypeScript",
     "React",
-    "Angular",
-    "Vue",
     "Next.js",
   ];
-  const backendSkills = ["Python", "C/C++/C#", "MongoDB", "Node.js", "AWS"];
+  const backendSkills = [
+    "Python",
+    "C/C++/C#",
+    "Node.js",
+    "MongoDB",
+    "Supabase",
+    "PostgreSQL",
+  ];
   return (
     <section
       id="about"
@@ -68,11 +73,11 @@ export const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
               <h3 className="text-xl font-bold mb-4"> 🏫 Education </h3>
+              <h2>
+                <strong> B.S. in Computer Science </strong> - UMass Lowell
+                (2020-2024)
+              </h2>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>
-                  <strong> B.S. in Computer Science </strong> - UMass Lowell
-                  (2020-2024)
-                </li>
                 <li>
                   Relevant Coursework: AI, Data Mining, Machine Learning, Cloud
                   Computing, Computer Architecture, Computing I - IV
@@ -84,7 +89,16 @@ export const About = () => {
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h4 className="font-semibold">
-                    Full Stack Engineering Intern at Fidelity Investments (Jun
+                    Frontend Developer: Skinstric AI (Remote - Aug 2025)
+                  </h4>
+                  <p>
+                    Programmed the website and utilized their AI API for
+                    accurate skin analysis.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold">
+                    Full Stack Engineering Intern: Fidelity Investments (Jun
                     2022 - Aug 2022)
                   </h4>
                   <p>

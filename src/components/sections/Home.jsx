@@ -15,15 +15,27 @@ export const Home = () => {
         <div className="flex justify-center space-x-4">
           <a
             href="https://github.com/imnotdeepak"
+            target="_blank"
+            rel="noopener noreferrer"
             className="border border-white text-white py-3 px-6 rounded font-medium transition-all duration-200 hover:translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)] hover:bg-gray-400/10"
           >
-            view projects
+            github
           </a>
           <a
             href="https://www.linkedin.com/in/deepakkolli051"
+            target="_blank"
+            rel="noopener noreferrer"
             className="border border-white text-white py-3 px-6 rounded font-medium transition-all duration-200 hover:translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)] hover:bg-gray-400/10"
           >
             linkedin
+          </a>
+          <a
+            href="https://www.linkedin.com/in/deepakkolli051"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-white text-white py-3 px-6 rounded font-medium transition-all duration-200 hover:translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)] hover:bg-gray-400/10"
+          >
+            resume
           </a>
           <a
             href="#contact"

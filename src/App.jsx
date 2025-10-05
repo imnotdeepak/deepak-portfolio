@@ -7,6 +7,7 @@ import { Home } from "./components/sections/Home.jsx";
 import { About } from "./components/sections/About.jsx";
 import { Projects } from "./components/sections/Projects.jsx";
 import { Contact } from "./components/sections/Contact";
+import { Footer } from "./components/sections/Footer";
 
 import "./index.css";
 
@@ -27,6 +28,7 @@ function App() {
         <About />
         <Projects />
         <Contact />
+        <Footer />
       </div>
     </>
   );
