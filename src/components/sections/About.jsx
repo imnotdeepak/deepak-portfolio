@@ -16,6 +16,7 @@ export const About = () => {
     "MongoDB",
     "Supabase",
     "PostgreSQL",
+    "Prisma",
   ];
   return (
     <section
