@@ -1,6 +1,6 @@
 # My Portfolio
 
-Link: https://deepak-portfolio-five-khaki.vercel.app
+Link: https://deepakkolli.dev
 
 <br />
 
