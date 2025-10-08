@@ -8,6 +8,9 @@ export const About = () => {
     "TypeScript",
     "React",
     "Next.js",
+    "TailwindCSS",
+    "GSAP",
+    "Framer Motion",
   ];
   const backendSkills = [
     "Python",
@@ -16,7 +19,9 @@ export const About = () => {
     "MongoDB",
     "Supabase",
     "PostgreSQL",
+    "Express.js",
     "Prisma",
+    "Drizzle",
   ];
   return (
     <section
