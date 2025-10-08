@@ -4,17 +4,19 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen flex items-center justify-center py-20"
+      className="min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 px-4"
     >
       <RevealOnScroll>
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent text-center">
+        <div className="max-w-5xl mx-auto w-full">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent text-center">
             Featured Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="w-full mx-auto p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-gray-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-2">Lime Messenger</h3>
-              <p className="text-gray-400 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="w-full mx-auto p-4 sm:p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-gray-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">
+                Lime Messenger
+              </h3>
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">
                 A messaging app that allows you to send messages in real time.
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
@@ -28,7 +30,7 @@ export const Projects = () => {
                 ].map((tech, key) => (
                   <span
                     key={key}
-                    className="bg-gray-300/10 text-white py-1 px-3 rounded-full text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
+                    className="bg-gray-300/10 text-white py-1 px-2 sm:px-3 rounded-full text-xs sm:text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
                     "
                   >
                     {tech}
@@ -36,12 +38,12 @@ export const Projects = () => {
                 ))}
               </div>
 
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-2">
                 <a
                   href="https://github.com/imnotdeepak/lime-messenger"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Project →
                 </a>
@@ -49,7 +51,7 @@ export const Projects = () => {
                   href="https://lime-dyg4y.sevalla.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Website →
                 </a>
@@ -57,14 +59,14 @@ export const Projects = () => {
             </div>
             <div
               className="
-              w-full mx-auto glass p-6 rounded-xl border border-white/10 
+              w-full mx-auto glass p-4 sm:p-6 rounded-xl border border-white/10 
               hover:-translate-y-1 hover:border-gray-500/30
               hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
               transition-all
             "
             >
-              <h3 className="text-xl font-bold mb-2">Signalist</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">Signalist</h3>
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">
                 An up-to-date stock market tracker that allows you to track
                 stocks and their performance, with real-time data and alerts.
               </p>
@@ -80,19 +82,19 @@ export const Projects = () => {
                   <span
                     key={key}
                     className="
-                      bg-gray-300/10 text-white py-1 px-3 rounded-full text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
+                      bg-gray-300/10 text-white py-1 px-2 sm:px-3 rounded-full text-xs sm:text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
                     "
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-2">
                 <a
                   href="https://github.com/imnotdeepak/Signalist"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Project →
                 </a>
@@ -100,7 +102,7 @@ export const Projects = () => {
                   href="https://signalist-six.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Website →
                 </a>
@@ -109,14 +111,14 @@ export const Projects = () => {
 
             <div
               className="
-              w-full mx-auto glass p-6 rounded-xl border border-white/10 
+              w-full mx-auto glass p-4 sm:p-6 rounded-xl border border-white/10 
               hover:-translate-y-1 hover:border-gray-500/30
               hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
               transition-all
             "
             >
-              <h3 className="text-xl font-bold mb-2">Pomo</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">Pomo</h3>
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">
                 A pomodoro timer web app with task management, state switching
                 and historic data.
               </p>
@@ -131,19 +133,19 @@ export const Projects = () => {
                   <span
                     key={key}
                     className="
-                      bg-gray-300/10 text-white py-1 px-3 rounded-full text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
+                      bg-gray-300/10 text-white py-1 px-2 sm:px-3 rounded-full text-xs sm:text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
                     "
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-2">
                 <a
                   href="https://github.com/imnotdeepak/pomo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Project →
                 </a>
@@ -151,7 +153,7 @@ export const Projects = () => {
                   href="https://pomo-theta.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Website →
                 </a>
@@ -160,14 +162,14 @@ export const Projects = () => {
 
             <div
               className="
-              w-full mx-auto glass p-6 rounded-xl border border-white/10 
+              w-full mx-auto glass p-4 sm:p-6 rounded-xl border border-white/10 
               hover:-translate-y-1 hover:border-gray-500/30
               hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
               transition-all
             "
             >
-              <h3 className="text-xl font-bold mb-2">Locked In</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">Locked In</h3>
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">
                 A life tracker that allows you to keep track of your busy
                 schedule.
               </p>
@@ -176,19 +178,19 @@ export const Projects = () => {
                   <span
                     key={key}
                     className="
-                      bg-gray-300/10 text-white py-1 px-3 rounded-full text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
+                      bg-gray-300/10 text-white py-1 px-2 sm:px-3 rounded-full text-xs sm:text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
                     "
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-2">
                 <a
                   href="https://github.com/imnotdeepak/Locked-In"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Project →
                 </a>
@@ -196,7 +198,7 @@ export const Projects = () => {
                   href="https://locked-in-theta.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Website →
                 </a>
@@ -205,16 +207,16 @@ export const Projects = () => {
 
             <div
               className="
-              w-full mx-auto glass p-6 rounded-xl border border-white/10 
+              w-full mx-auto glass p-4 sm:p-6 rounded-xl border border-white/10 
               hover:-translate-y-1 hover:border-gray-500/30
               hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
               transition-all
             "
             >
-              <h3 className="text-xl font-bold mb-2">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">
                 Bar Website Landing Page
               </h3>
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">
                 A landing page for a bar with proper responsiveness and
                 animations
               </p>
@@ -223,19 +225,19 @@ export const Projects = () => {
                   <span
                     key={tech}
                     className="
-                      bg-gray-300/10 text-white py-1 px-3 rounded-full text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
+                      bg-gray-300/10 text-white py-1 px-2 sm:px-3 rounded-full text-xs sm:text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
                     "
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-2">
                 <a
                   href="https://github.com/imnotdeepak/bar-sample"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Project →
                 </a>
@@ -243,7 +245,7 @@ export const Projects = () => {
                   href="https://bar-sample.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Website →
                 </a>
@@ -252,14 +254,16 @@ export const Projects = () => {
 
             <div
               className="
-              w-full mx-auto glass p-6 rounded-xl border border-white/10 
+              w-full mx-auto glass p-4 sm:p-6 rounded-xl border border-white/10 
               hover:-translate-y-1 hover:border-gray-500/30
               hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
               transition-all
             "
             >
-              <h3 className="text-xl font-bold mb-2">NFT Marketplace Demo</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">
+                NFT Marketplace Demo
+              </h3>
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">
                 A demo of an NFT marketplace that allows you to view NFTs and
                 their details
               </p>
@@ -268,19 +272,19 @@ export const Projects = () => {
                   <span
                     key={key}
                     className="
-                      bg-gray-300/10 text-white py-1 px-3 rounded-full text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
+                      bg-gray-300/10 text-white py-1 px-2 sm:px-3 rounded-full text-xs sm:text-sm hover:bg-gray-300/20 hover:shadow-[0_2px_8px_rgba(108, 122, 137, 1)] transition
                     "
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <div className="flex justify-between items-center ">
+              <div className="flex justify-between items-center gap-2">
                 <a
                   href="https://github.com/imnotdeepak/nft-marketplace"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Project →
                 </a>
@@ -288,7 +292,7 @@ export const Projects = () => {
                   href="https://nft-marketplace-two-tau.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors my-4"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   View Website →
                 </a>
