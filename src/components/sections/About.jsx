@@ -10,6 +10,7 @@ export const About = () => {
     "Next.js",
     "TailwindCSS",
     "GSAP",
+    "Three.js",
     "Framer Motion",
   ];
   const backendSkills = [
