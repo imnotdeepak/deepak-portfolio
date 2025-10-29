@@ -150,7 +150,7 @@ export const Projects = () => {
                   View Project →
                 </a>
                 <a
-                  href="https://pomo-theta.vercel.app/"
+                  href="https://pomo-six-umber.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
