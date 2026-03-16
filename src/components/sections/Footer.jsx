@@ -1,53 +1,36 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 
 export const Footer = () => {
+  const links = [
+    { label: "Home", href: "#home", external: false },
+    { label: "Contact", href: "#contact", external: false },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/deepakkolli051", external: true },
+    { label: "GitHub", href: "https://github.com/imnotdeepak", external: true },
+    { label: "Resume", href: "/Deepak_Kolli_Resume.pdf", external: true },
+  ];
+
   return (
-    <footer className="border-t border-gray-600 bg-black text-gray-100 py-8 sm:py-12">
+    <footer className="border-t border-white/8 bg-black py-10">
       <RevealOnScroll>
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center">
-            <h3 className="text-base sm:text-lg font-semibold mb-6 sm:mb-10 text-white text-center">
-              Quick Links
-            </h3>
-            <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 md:gap-0">
+        <div className="max-w-5xl mx-auto px-4 flex flex-col items-center gap-6">
+          <span className="font-mono text-sm font-bold text-white/80 tracking-wide">
+            deepak.
+          </span>
+          <div className="flex flex-wrap justify-center gap-6">
+            {links.map(({ label, href, external }) => (
               <a
-                href="#home"
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm sm:text-base"
+                key={label}
+                href={href}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="text-gray-500 hover:text-white transition-colors duration-200 text-sm"
               >
-                Home
+                {label}
               </a>
-              <a
-                href="#contact"
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm sm:text-base"
-              >
-                Contact
-              </a>
-              <a
-                href="https://www.linkedin.com/in/deepakkolli051"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm sm:text-base"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/imnotdeepak"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm sm:text-base"
-              >
-                Github
-              </a>
-              <a
-                href="/Deepak_Kolli_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm sm:text-base"
-              >
-                Resume
-              </a>
-            </div>
+            ))}
           </div>
+          <p className="text-gray-700 text-xs">
+            © {new Date().getFullYear()} Deepak Kolli
+          </p>
         </div>
       </RevealOnScroll>
     </footer>

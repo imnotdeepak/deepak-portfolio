@@ -3,15 +3,10 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
 
 export const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         import.meta.env.VITE_SERVICE_ID,
@@ -29,66 +24,63 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 px-4"
+      className="min-h-screen flex items-center justify-center py-20 px-4"
     >
       <RevealOnScroll>
-        <div className="w-full max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent text-center">
-            {" "}
+        <div className="w-full max-w-xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent text-center">
             Get In Touch
           </h2>
+          <p className="text-gray-500 text-sm text-center mb-10">
+            Have a project in mind? Let's talk.
+          </p>
+
           <form
-            className="space-y-4 sm:space-y-6 w-full"
+            className="space-y-4 bg-white/3 border border-white/8 rounded-2xl p-6 sm:p-8 backdrop-blur-sm"
             onSubmit={handleSubmit}
           >
-            <div className="relative">
+            <div>
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
                 value={formData.name}
-                className="w-full bg-white/5 border border-white/10 rounded px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm sm:text-base transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
-                placeholder="Name..."
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm transition focus:outline-none focus:border-white/25 focus:bg-white/6 placeholder-gray-600"
+                placeholder="Your name"
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
 
-            <div className="relative">
+            <div>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
                 value={formData.email}
-                className="w-full bg-white/5 border border-white/10 rounded px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm sm:text-base transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
-                placeholder="example@gmail.com"
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm transition focus:outline-none focus:border-white/25 focus:bg-white/6 placeholder-gray-600"
+                placeholder="your@email.com"
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
 
-            <div className="relative">
+            <div>
               <textarea
                 id="message"
                 name="message"
                 required
                 rows={5}
                 value={formData.message}
-                className="w-full bg-white/5 border border-white/10 rounded px-3 sm:px-4 py-2.5 sm:py-3 text-white text-sm sm:text-base transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 resize-none"
-                placeholder="Your Message..."
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm transition focus:outline-none focus:border-white/25 focus:bg-white/6 resize-none placeholder-gray-600"
+                placeholder="What's on your mind?"
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-gray-500 text-white py-2.5 sm:py-3 px-6 rounded font-medium text-sm sm:text-base transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(108, 122, 137, 1)]"
+              className="w-full bg-white/20 text-white border border-white/30 py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-white/28 hover:-translate-y-0.5"
             >
               Send Message
             </button>
