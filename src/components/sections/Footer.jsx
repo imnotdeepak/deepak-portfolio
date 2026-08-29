@@ -6,7 +6,7 @@ export const Footer = () => {
     { label: "Contact", href: "#contact", external: false },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/deepakkolli051", external: true },
     { label: "GitHub", href: "https://github.com/imnotdeepak", external: true },
-    { label: "Resume", href: "/Deepak_Kolli_Resume.pdf", external: true },
+    { label: "Resume", href: "/Deepak_Kolli_FE_Resume.pdf", external: true },
   ];
 
   return (

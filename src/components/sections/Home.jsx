@@ -1,17 +1,21 @@
-import { FallingPattern } from "../falling-pattern";
+import { CanvasRevealEffect } from "../ui/canvas-reveal-effect";
 
 export const Home = () => {
   return (
     <section
       id="home"
-      className="relative w-full overflow-hidden bg-black"
+      className="relative w-full h-screen overflow-hidden bg-black"
     >
-      <FallingPattern
-        className="h-screen w-full [mask-image:radial-gradient(ellipse_at_center,transparent,var(--background))]"
-        color="#ffffff"
-        duration={120}
-        blurIntensity="0.5em"
-      />
+      <div className="absolute inset-0 z-0">
+        <CanvasRevealEffect
+          animationSpeed={3}
+          containerClassName="bg-black"
+          colors={[[255, 255, 255]]}
+          dotSize={6}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,1)_100%)]" />
+        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black to-transparent" />
+      </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center px-4">
       <div className="text-center w-full max-w-4xl">
@@ -25,7 +29,7 @@ export const Home = () => {
         </div>
 
         {/* Subtitle */}
-        <p className="text-gray-400 text-base sm:text-lg mb-10 max-w-lg mx-auto animate-fade-up-d1 leading-relaxed">
+        <p className="text-white text-base sm:text-lg mb-10 max-w-lg mx-auto animate-fade-up-d1 leading-relaxed">
           I build exceptional web applications — from pixel-perfect UIs to
           scalable backend systems.
         </p>
@@ -50,7 +54,7 @@ export const Home = () => {
             LinkedIn
           </a>
           <a
-            href="/Deepak_Kolli_Resume.pdf"
+            href="/Deepak_Kolli_FE_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-hero w-full sm:w-auto py-3 px-7 font-semibold text-sm transition-all duration-200 hover:brightness-125 text-center"
