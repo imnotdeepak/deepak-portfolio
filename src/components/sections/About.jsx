@@ -28,10 +28,10 @@ const allSkills = [
 const experiences = [
     {
     role: "Founder / Full Stack Developer",
-    company: "Vita",
+    company: "LycheeCorp",
     period: "Nov 2025 – Present",
     type: "Remote",
-    description: "Created a website where users can manage their entire life",
+    description: "• Created Vita, a website where users can manage their entire life.\n• Created Noxa, an app that allows you to block screentime.",
   },
   {
     role: "Frontend Developer",
@@ -112,7 +112,7 @@ export const About = () => {
                       <span className="text-gray-600 text-xs shrink-0">{exp.period}</span>
                     </div>
                     <p className="text-gray-500 text-xs mb-2">{exp.company} · {exp.type}</p>
-                    <p className="text-gray-600 text-xs leading-relaxed">{exp.description}</p>
+                    <p className="text-gray-600 text-xs leading-relaxed whitespace-pre-line">{exp.description}</p>
                   </div>
                 ))}
               </div>
