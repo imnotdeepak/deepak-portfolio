@@ -16,9 +16,9 @@
   --font-mono: "JetBrains Mono", monospace;
 
   /* Shared motion system: one timing/easing/distance for every entrance and reveal */
-  --reveal-duration: 0.8s;
+  --reveal-duration: 0.4s;
   --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --reveal-distance: 24px;
+  --reveal-distance: 16px;
   --hover-lift: -4px;
   --hover-duration: 250ms;
 }

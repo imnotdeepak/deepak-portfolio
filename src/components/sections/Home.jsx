@@ -18,17 +18,9 @@ export const Home = () => {
         <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
       </div>
 
-      <div className="absolute inset-0 z-10 flex flex-col justify-between px-6 sm:px-10 py-24 sm:py-28">
-        {/* Top row: role + location metadata */}
-        <div className="flex justify-between items-start animate-fade-up">
-          <p className="mono-label">/ FULL-STACK ENGINEER</p>
-          <p className="mono-label text-right hidden sm:block">
-            / AVAILABLE FOR WORK
-          </p>
-        </div>
-
+      <div className="absolute inset-0 z-10 flex flex-col justify-center gap-12 px-6 sm:px-10 py-24 sm:py-28">
         {/* Main heading */}
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex flex-col">
           <h1 className="font-display text-[13vw] sm:text-[9vw] md:text-[7vw] leading-[0.95] tracking-tight animate-fade-up">
             Deepak
             <br />

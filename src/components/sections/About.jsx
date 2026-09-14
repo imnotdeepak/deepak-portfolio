@@ -88,10 +88,10 @@ export const About = () => {
                   >
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <h4 className="text-white font-semibold text-sm leading-tight">{exp.role}</h4>
-                      <span className="text-gray-600 text-xs shrink-0 font-mono">{exp.period}</span>
+                      <span className="text-gray-400 text-xs shrink-0 font-mono">{exp.period}</span>
                     </div>
-                    <p className="text-gray-500 text-xs mb-2 font-mono">{exp.company} · {exp.type}</p>
-                    <p className="text-gray-600 text-xs leading-relaxed whitespace-pre-line font-mono">{exp.description}</p>
+                    <p className="text-gray-400 text-xs mb-2 font-mono">{exp.company} · {exp.type}</p>
+                    <p className="text-gray-300 text-xs leading-relaxed whitespace-pre-line font-mono">{exp.description}</p>
                   </div>
                 ))}
               </div>
@@ -102,8 +102,8 @@ export const About = () => {
               <p className="mono-label mb-4 text-center"><span className="prompt-mark">[/&gt;]</span> EDUCATION</p>
               <div className="border border-white/12 px-4 py-4">
                 <p className="text-white font-semibold text-sm">B.S. Computer Science · UMass Lowell</p>
-                <p className="text-gray-500 text-xs mt-1 font-mono">AI · ML · Data Mining · Cloud · Architecture</p>
-                <p className="text-gray-600 text-xs mt-2 font-mono">2020 – 2024</p>
+                <p className="text-gray-400 text-xs mt-1 font-mono">AI · ML · Data Mining · Cloud · Architecture</p>
+                <p className="text-gray-400 text-xs mt-2 font-mono">2020 – 2024</p>
               </div>
             </div>
           </div>

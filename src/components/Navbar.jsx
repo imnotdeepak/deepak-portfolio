@@ -1,12 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
+  const [pastHero, setPastHero] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
 
+  useEffect(() => {
+    const home = document.getElementById("home");
+    if (!home) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setPastHero(!entry.isIntersecting),
+      { threshold: 0, rootMargin: "-64px 0px 0px 0px" }
+    );
+    observer.observe(home);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur-md">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur-md transition-all duration-300 ${
+        pastHero || menuOpen
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+    >
       <div className="flex items-center justify-between px-6 sm:px-10 py-4">
         <a
           href="#home"

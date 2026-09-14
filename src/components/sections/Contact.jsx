@@ -3,9 +3,23 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import { SectionHeading } from "../SectionHeading.jsx";
 import emailjs from "emailjs-com";
 
+const EMAIL = "deepakkolli051@gmail.com";
+
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard API unavailable; fall back to a mailto link click
+      window.location.href = `mailto:${EMAIL}`;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +48,7 @@ export const Contact = () => {
           <SectionHeading
             index="03"
             title="Contact"
-            subtitle="Have a project in mind? Let's talk."
+            subtitle="Have an idea, job, or project in mind? Let's talk."
           />
 
           <form className="space-y-4 border border-white/12 p-6 sm:p-8" onSubmit={handleSubmit}>
@@ -97,6 +111,17 @@ export const Contact = () => {
               )}
             </div>
           </form>
+
+          <button
+            type="button"
+            onClick={handleCopyEmail}
+            className="mt-4 w-full flex items-center justify-between border border-white/12 px-6 py-4 hover-lift hover:border-[var(--accent)]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          >
+            <span className="mono-label"><span className="prompt-mark">[/&gt;]</span> EMAIL</span>
+            <span className="font-mono text-sm text-white">
+              {copied ? "Copied!" : EMAIL}
+            </span>
+          </button>
         </div>
       </RevealOnScroll>
     </section>
