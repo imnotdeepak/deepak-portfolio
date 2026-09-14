@@ -1,32 +1,23 @@
 import { RevealOnScroll } from "../RevealOnScroll.jsx";
+import { SectionHeading } from "../SectionHeading.jsx";
 
-const allSkills = [
-  // Frontend — green
-  { name: "React",         color: "text-emerald-400 border-emerald-500/20" },
-  { name: "Next.js",       color: "text-emerald-400 border-emerald-500/20" },
-  { name: "TailwindCSS",   color: "text-emerald-400 border-emerald-500/20" },
-  { name: "Three.js",      color: "text-emerald-400 border-emerald-500/20" },
-  { name: "GSAP",          color: "text-emerald-400 border-emerald-500/20" },
-  { name: "Framer Motion", color: "text-emerald-400 border-emerald-500/20" },
-  { name: "HTML",          color: "text-emerald-400 border-emerald-500/20" },
-  { name: "CSS",           color: "text-emerald-400 border-emerald-500/20" },
-  // Languages — red
-  { name: "TypeScript",    color: "text-red-400 border-red-500/20" },
-  { name: "JavaScript",    color: "text-red-400 border-red-500/20" },
-  { name: "Python",        color: "text-red-400 border-red-500/20" },
-  { name: "C/C++",         color: "text-red-400 border-red-500/20" },
-  { name: "Node.js",       color: "text-red-400 border-red-500/20" },
-  { name: "Express.js",    color: "text-red-400 border-red-500/20" },
-  // Databases — blue
-  { name: "MongoDB",       color: "text-blue-400 border-blue-500/20" },
-  { name: "PostgreSQL",    color: "text-blue-400 border-blue-500/20" },
-  { name: "Supabase",      color: "text-blue-400 border-blue-500/20" },
-  { name: "Prisma",        color: "text-blue-400 border-blue-500/20" },
-  { name: "Drizzle",       color: "text-blue-400 border-blue-500/20" },
+const skillGroups = [
+  {
+    label: "FRONTEND",
+    skills: ["React", "Next.js", "TailwindCSS", "Three.js", "GSAP", "Framer Motion", "HTML", "CSS"],
+  },
+  {
+    label: "LANGUAGES",
+    skills: ["TypeScript", "JavaScript", "Python", "C/C++", "Node.js", "Express.js"],
+  },
+  {
+    label: "DATABASES",
+    skills: ["MongoDB", "PostgreSQL", "Supabase", "Prisma", "Drizzle"],
+  },
 ];
 
 const experiences = [
-    {
+  {
     role: "Founder / Full Stack Developer",
     company: "LycheeCorp",
     period: "Nov 2025 – Present",
@@ -53,68 +44,66 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center py-20 px-4 overflow-hidden"
+      className="min-h-screen flex items-center py-24 px-6 sm:px-10 scroll-mt-20"
     >
       <RevealOnScroll>
-        <div className="max-w-4xl mx-auto w-full">
-          {/* Heading */}
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent text-center">
-            About Me
-          </h2>
-          <p className="text-gray-500 text-center max-w-lg mx-auto mb-12 text-sm leading-relaxed">
-            Passionate developer with expertise in building scalable web
-            applications and creating innovative solutions across the full stack.
-          </p>
+        <div className="max-w-5xl mx-auto w-full">
+          <SectionHeading
+            index="01"
+            title="About"
+            subtitle="Passionate developer with expertise in building scalable web applications and creating innovative solutions across the full stack."
+          />
 
-          {/* Skills Marquee */}
-          <div className="mb-14 relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to right, black, transparent)" }} />
-            <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(to left, black, transparent)" }} />
-
-            <div className="flex w-max animate-marquee">
-              {[...allSkills, ...allSkills].map((skill, i) => (
-                <span
-                  key={i}
-                  className={`inline-flex items-center mx-2.5 px-3.5 py-1.5 rounded-md border bg-white/4 text-xs font-medium whitespace-nowrap ${skill.color}`}
-                >
-                  {skill.name}
-                </span>
+          {/* Skills grid, grouped by category */}
+          <div className="mb-16">
+            <p className="mono-label mb-4"><span className="prompt-mark">[/&gt;]</span> SKILLS</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {skillGroups.map((group) => (
+                <div key={group.label}>
+                  <p className="mono-label mb-3 tick">{group.label}</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {group.skills.map((skill) => (
+                      <div
+                        key={skill}
+                        className="border border-white/12 px-3 py-2.5 text-sm font-mono hover-lift hover:border-[var(--accent)]/50"
+                      >
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
 
-          <div className="max-w-xl mx-auto space-y-8">
-            {/* Education */}
-            <div>
-              <p className="text-xs text-white/60 uppercase tracking-widest mb-3">Education</p>
-              <div className="px-4 py-3 rounded-xl border border-white/8 bg-white/3 flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-white font-semibold text-xs">B.S. Computer Science · UMass Lowell</p>
-                  <p className="text-gray-600 text-xs mt-0.5">AI · ML · Data Mining · Cloud · Architecture</p>
-                </div>
-                <span className="text-gray-600 text-xs shrink-0">2020 – 2024</span>
-              </div>
-            </div>
-
+          <div className="max-w-2xl mx-auto flex flex-col gap-10">
             {/* Experience */}
             <div>
-              <p className="text-xs text-white/60 uppercase tracking-widest mb-3">Experience</p>
+              <p className="mono-label mb-4 text-center"><span className="prompt-mark">[/&gt;]</span> EXPERIENCE</p>
               <div className="space-y-3">
                 {experiences.map((exp, i) => (
                   <div
                     key={i}
-                    className="p-4 rounded-xl border border-white/8 bg-white/3 hover:-translate-y-1 transition-transform duration-300"
+                    className="p-4 border border-white/12 hover-lift hover:border-[var(--accent)]/50"
                   >
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <h4 className="text-white font-semibold text-sm leading-tight">{exp.role}</h4>
-                      <span className="text-gray-600 text-xs shrink-0">{exp.period}</span>
+                      <span className="text-gray-600 text-xs shrink-0 font-mono">{exp.period}</span>
                     </div>
-                    <p className="text-gray-500 text-xs mb-2">{exp.company} · {exp.type}</p>
-                    <p className="text-gray-600 text-xs leading-relaxed whitespace-pre-line">{exp.description}</p>
+                    <p className="text-gray-500 text-xs mb-2 font-mono">{exp.company} · {exp.type}</p>
+                    <p className="text-gray-600 text-xs leading-relaxed whitespace-pre-line font-mono">{exp.description}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Education */}
+            <div>
+              <p className="mono-label mb-4 text-center"><span className="prompt-mark">[/&gt;]</span> EDUCATION</p>
+              <div className="border border-white/12 px-4 py-4">
+                <p className="text-white font-semibold text-sm">B.S. Computer Science · UMass Lowell</p>
+                <p className="text-gray-500 text-xs mt-1 font-mono">AI · ML · Data Mining · Cloud · Architecture</p>
+                <p className="text-gray-600 text-xs mt-2 font-mono">2020 – 2024</p>
               </div>
             </div>
           </div>

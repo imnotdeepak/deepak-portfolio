@@ -6,22 +6,22 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   }, [menuOpen]);
 
   return (
-    <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] md:w-auto">
-      <div className="flex items-center justify-between md:justify-start md:gap-10 bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+    <nav className="fixed top-0 left-0 right-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur-md">
+      <div className="flex items-center justify-between px-6 sm:px-10 py-4">
         <a
           href="#home"
           className="font-mono text-sm font-bold text-white tracking-wide shrink-0"
         >
-          deepak.
+          <span className="prompt-mark">[/&gt;]</span> deepak
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-8">
           {["about", "projects", "contact"].map((link) => (
             <a
               key={link}
               href={`#${link}`}
-              className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+              className="mono-label hover:text-[var(--accent)] transition-colors"
             >
               {link}
             </a>
@@ -30,9 +30,10 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-white cursor-pointer focus:outline-none"
+          className="md:hidden text-white cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <svg
             className="w-5 h-5"

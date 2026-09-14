@@ -5,26 +5,46 @@
 
 :root {
   --background: oklch(0 0 0);
-  --primary: #8b5cf6;
+  --ink: #ffffff;
+  --ink-dim: #8a8a8a;
+  --ink-faint: #4d4d4d;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #a6ff00;
+  --accent-dim: rgba(166, 255, 0, 0.14);
+
+  --font-display: "Fraunces", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Shared motion system: one timing/easing/distance for every entrance and reveal */
+  --reveal-duration: 0.8s;
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-distance: 24px;
+  --hover-lift: -4px;
+  --hover-duration: 250ms;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-h2 {
-  font-family: "Instrument Serif", serif;
-  letter-spacing: 0.04em;
-  font-size: 2.25rem;
-}
-
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-mono);
   background-color: black;
-  color: #f3f4f3;
+  color: var(--ink);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 @layer utilities {
@@ -45,95 +65,158 @@ body {
     animation: loading 0.8s ease infinite;
   }
 
-  /* ── Marquee ── */
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @keyframes marquee-reverse {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-  }
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-  }
-  .animate-marquee-reverse {
-    animation: marquee-reverse 30s linear infinite;
-  }
-  .animate-marquee:hover,
-  .animate-marquee-reverse:hover {
-    animation-play-state: paused;
-  }
-
-  /* ── Hero fade-up entrance ── */
+  /* ── Fade-up entrance (shared by hero load-in and scroll reveal) ── */
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(28px); }
+    from { opacity: 0; transform: translateY(var(--reveal-distance)); }
     to   { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-up {
-    animation: fade-up 0.8s ease forwards;
+    animation: fade-up var(--reveal-duration) var(--reveal-ease) forwards;
   }
   .animate-fade-up-d1 {
     opacity: 0;
-    animation: fade-up 0.8s ease 0.18s forwards;
+    animation: fade-up var(--reveal-duration) var(--reveal-ease) 0.18s forwards;
   }
   .animate-fade-up-d2 {
     opacity: 0;
-    animation: fade-up 0.8s ease 0.34s forwards;
+    animation: fade-up var(--reveal-duration) var(--reveal-ease) 0.34s forwards;
   }
 
-  /* ── Animated gradient text ── */
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50%       { background-position: 100% 50%; }
+  /* ── Signature interaction: per-character cascade (raised from the split-flap challenger) ── */
+  @keyframes cascade-in {
+    from { opacity: 0; transform: translateY(0.5em); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-  .animate-gradient-text {
-    background: linear-gradient(90deg, #ffffff, #9ca3af, #ffffff, #6b7280, #ffffff);
-    background-size: 300% 300%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: gradient-shift 5s ease infinite;
-  }
-
-  /* ── Hero buttons ── */
-  .btn-hero {
-    color: white;
-    background: rgba(255,255,255,0.04);
-    transition: background 0.2s;
-    border-top: 1px solid rgba(255,255,255,0.15);
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    border-right: 1px solid rgba(255,255,255,0.15);
-  }
-  .btn-hero:first-of-type {
-    border-left: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px 0 0 8px;
-  }
-  .btn-hero:last-of-type {
-    border-radius: 0 8px 8px 0;
-  }
-  .btn-hero:hover { background: rgba(255,255,255,0.1); }
-
-  /* ── Floating orbs ── */
-  @keyframes orb-float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33%       { transform: translate(18px, -18px) scale(1.04); }
-    66%       { transform: translate(-14px, 14px) scale(0.96); }
-  }
-  .animate-orb {
-    animation: orb-float 9s ease-in-out infinite;
+  .cascade-char {
+    display: inline-block;
+    animation: cascade-in 0.5s var(--reveal-ease) both;
   }
 }
 
-/* ── Scroll reveal ── */
+/* ── Ambient background: dot-matrix field carried through the whole page ── */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: black;
+  background-image:
+    radial-gradient(circle at 50% 0%, var(--accent-dim), transparent 60%),
+    radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: auto, 20px 20px;
+  background-position: center, center;
+}
+
+/* ── Lime glow orb: organic, grain-textured light source. Hero only. ── */
+.glow-orb {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 42% 58% 61% 39% / 45% 40% 60% 55%;
+  background:
+    radial-gradient(ellipse 55% 70% at 38% 32%, rgba(245, 255, 220, 0.95) 0%, rgba(200, 255, 70, 0.75) 16%, transparent 52%),
+    radial-gradient(ellipse 65% 50% at 62% 60%, rgba(150, 230, 20, 0.55) 0%, rgba(100, 180, 0, 0.3) 30%, transparent 65%),
+    radial-gradient(ellipse 45% 60% at 55% 40%, rgba(166, 255, 0, 0.4) 0%, transparent 60%);
+  filter: blur(50px);
+  opacity: 0.75;
+  animation: orb-drift 14s ease-in-out infinite;
+}
+.glow-orb::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+@keyframes orb-drift {
+  0%, 100% { border-radius: 42% 58% 61% 39% / 45% 40% 60% 55%; }
+  33% { border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; }
+  66% { border-radius: 48% 52% 55% 45% / 40% 60% 40% 60%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb {
+    animation: none;
+  }
+}
+
+/* ── Lime title text: used for section headings outside the hero (no orb) ── */
+.title-accent {
+  color: var(--accent);
+}
+
+/* ── Terminal prompt notation: extra tracking so / and > don't crowd at small sizes ── */
+.prompt-mark {
+  letter-spacing: 0.05em;
+}
+
+/* ── Scroll reveal (shares timing/distance with the hero entrance) ── */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(var(--reveal-distance));
+  transition: opacity var(--reveal-duration) var(--reveal-ease),
+              transform var(--reveal-duration) var(--reveal-ease);
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── Shared hover lift (cards, buttons) ── */
+.hover-lift {
+  transition: transform var(--hover-duration) ease, border-color var(--hover-duration) ease, box-shadow var(--hover-duration) ease;
+}
+.hover-lift:hover {
+  transform: translateY(var(--hover-lift));
+}
+
+/* ── Terminal notation ── */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+/* .mono-label's own color would otherwise win the cascade over Tailwind's
+   hover:text-[var(--accent)] utility, since both are single-class selectors
+   and this stylesheet is emitted after Tailwind's utilities. */
+a.mono-label:hover {
+  color: var(--accent);
+}
+.tick {
+  display: inline-flex;
+  align-items: center;
+}
+.tick::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  margin-right: 0.6em;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-up-d1,
+  .animate-fade-up-d2,
+  .cascade-char {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hover-lift:hover {
+    transform: none;
+  }
 }
 
 .dark {
@@ -141,5 +224,5 @@ body {
 }
 
 @theme inline {
-  --color-background: var(----background);
+  --color-background: var(--background);
 }

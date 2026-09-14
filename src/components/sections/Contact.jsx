@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
+import { SectionHeading } from "../SectionHeading.jsx";
 import emailjs from "emailjs-com";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setStatus("sending");
     emailjs
       .sendForm(
         import.meta.env.VITE_SERVICE_ID,
@@ -15,64 +18,63 @@ export const Contact = () => {
         import.meta.env.VITE_PUBLIC_KEY
       )
       .then(() => {
-        alert("Message Sent!");
+        setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       })
-      .catch(() => alert("Oops! Something went wrong. Please try again."));
+      .catch(() => setStatus("error"));
   };
 
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center py-20 px-4"
+      className="min-h-screen flex items-center py-24 px-6 sm:px-10 scroll-mt-20"
     >
       <RevealOnScroll>
-        <div className="w-full max-w-xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent text-center">
-            Get In Touch
-          </h2>
-          <p className="text-gray-500 text-sm text-center mb-10">
-            Have a project in mind? Let's talk.
-          </p>
+        <div className="max-w-xl mx-auto w-full">
+          <SectionHeading
+            index="03"
+            title="Contact"
+            subtitle="Have a project in mind? Let's talk."
+          />
 
-          <form
-            className="space-y-4 bg-white/3 border border-white/8 rounded-2xl p-6 sm:p-8 backdrop-blur-sm"
-            onSubmit={handleSubmit}
-          >
+          <form className="space-y-4 border border-white/12 p-6 sm:p-8" onSubmit={handleSubmit}>
             <div>
+              <label htmlFor="name" className="mono-label block mb-1.5">Name</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
                 value={formData.name}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm transition focus:outline-none focus:border-white/25 focus:bg-white/6 placeholder-gray-600"
+                className="w-full bg-transparent border border-white/12 px-4 py-3 text-white text-sm font-mono transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus:border-[var(--accent)] placeholder-gray-600"
                 placeholder="Your name"
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
 
             <div>
+              <label htmlFor="email" className="mono-label block mb-1.5">Email</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
                 value={formData.email}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm transition focus:outline-none focus:border-white/25 focus:bg-white/6 placeholder-gray-600"
+                className="w-full bg-transparent border border-white/12 px-4 py-3 text-white text-sm font-mono transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus:border-[var(--accent)] placeholder-gray-600"
                 placeholder="your@email.com"
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
 
             <div>
+              <label htmlFor="message" className="mono-label block mb-1.5">Message</label>
               <textarea
                 id="message"
                 name="message"
                 required
                 rows={5}
                 value={formData.message}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm transition focus:outline-none focus:border-white/25 focus:bg-white/6 resize-none placeholder-gray-600"
+                className="w-full bg-transparent border border-white/12 px-4 py-3 text-white text-sm font-mono transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus:border-[var(--accent)] resize-none placeholder-gray-600"
                 placeholder="What's on your mind?"
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
@@ -80,10 +82,20 @@ export const Contact = () => {
 
             <button
               type="submit"
-              className="w-full bg-white/20 text-white border border-white/30 py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-white/28 hover:-translate-y-0.5"
+              disabled={status === "sending"}
+              className="w-full bg-[var(--accent)] text-black py-3 px-6 font-mono font-semibold text-sm hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              Send Message
+              {status === "sending" ? "SENDING..." : "[/>] SEND MESSAGE"}
             </button>
+
+            <div role="status" aria-live="polite" className="min-h-[1.5rem]">
+              {status === "success" && (
+                <p className="mono-label !text-[var(--accent)]">Message sent — I'll get back to you soon.</p>
+              )}
+              {status === "error" && (
+                <p className="mono-label !text-red-400">Something went wrong. Please try again or email me directly.</p>
+              )}
+            </div>
           </form>
         </div>
       </RevealOnScroll>

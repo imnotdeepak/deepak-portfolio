@@ -1,13 +1,13 @@
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   return (
     <div
-      className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center
+      className={`fixed inset-0 bg-black z-50 flex flex-col items-center justify-center
         transition-all duration-300 ease-in-out
         ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
     >
       <button
         onClick={() => setMenuOpen(false)}
-        className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors focus:outline-none cursor-pointer"
+        className="absolute top-6 right-6 text-white hover:text-[var(--accent)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] cursor-pointer"
         aria-label="Close Menu"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,12 +21,12 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
             key={link}
             href={`#${link}`}
             onClick={() => setMenuOpen(false)}
-            className={`text-2xl font-semibold capitalize transition-all duration-300
+            className={`font-mono uppercase text-2xl font-semibold transition-all duration-300
               ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-              text-white hover:text-violet-400`}
+              text-white hover:text-[var(--accent)]`}
             style={{ transitionDelay: menuOpen ? `${i * 60}ms` : "0ms" }}
           >
-            {link}
+            <span className="prompt-mark">[/&gt;]</span> {link}
           </a>
         ))}
       </nav>
